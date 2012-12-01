@@ -46,7 +46,7 @@ Here is a sample plan file for a fictitious Tomcat web app called 'Platform' (pl
 	log-level: debug
 
 	# HOOKS
-	%OnServerSetup
+	%Postinstall
 	ln -nfs /var/artifacts/platform/${args.1} /var/tomcat/webapps/${args.1}
 
 This plan will deploy the artifact (defined on the first command line parameter)
