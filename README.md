@@ -43,6 +43,7 @@ Here is a sample plan file for a fictitious Tomcat web app called 'Platform' (pl
 	artifact-location: http://my-nexus-instance.com/repo/platform/${args.1}
 	artifact-target: /var/artifacts/platform
 	servlet-location: /var/tomcat7
+	destination-servers: qaz07web qaz07web
 	log-level: debug
 
 	# HOOKS
@@ -71,6 +72,42 @@ which custom actions can be inserted into the deploy process:
 - `%Finally`: runs after deployment is complete
 Hooks are what give Shepherd the edge over other deployment frameworks. They allow the
 flexibility of configuration where needed, while leaving the heavy lifting to Shepherd.
+
+## plan file
+
+The plan file contains all of the information specific to your artifact that's necessary
+for a successful deployment. If Shepherd is a short-order cook at a restaurant, the plan
+file is the customer's order. Here is a list of the parameters that can be used in a plan:
+<table>
+<tr>
+<th>project-type</th><td>determines what deployment template Shepherd uses (e.g. java/tomcat)</td>
+</tr>
+<tr>
+<th>artifact-type</th><td>packaging type of artifact (e.g. war, jar, tgz)</td>
+</tr>
+<tr>
+<th>artifact-location</th><td>URI of file location (e.g. http://myserver.com/file.war)</td>
+</tr>
+<tr>
+<th>artifact-target</th><td>path to artifact location (e.g. /var/tomcat/webapps)</td>
+</tr>
+<tr>
+<th>servlet-location</th><td>path to servlet container (e.g. /var/tomcat)</td>
+</tr>
+<tr>
+<th>destination-servers</th><td>space-separated list of servers where deployment should go</td>
+</tr>
+<tr>
+<th>log-level</th><td>sets the logging level output</td>
+</tr>
+</table>
+Lines that begin with a hash symbol (#) will be ignored and so can be used to make comments.
+
+## requirements
+
+- Java 1.6 or greater
+- MySQL version 5.0.37 or greater
+
 
 ## q&a
 
